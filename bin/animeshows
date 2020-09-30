@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'pry'
-#require 'HTTParty'   load error
+require 'net/http'   
 require 'json'
 
 require_relative '../lib/cli'
 require_relative '../lib/api'
 require_relative '../lib/anime'
 
-puts "Hello World"
+
+CLI.new.menu
