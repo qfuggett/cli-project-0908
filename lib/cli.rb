@@ -15,7 +15,6 @@ class CLI
     input = gets.strip.downcase
     while input != 'exit' do
       if input == 'keyword'
-        #@keyword == gets.strip.downcase
         API.get_anime(@keyword) if Anime.find_by_keyword(@keyword).length == 0 
         print_anime
         prompt
@@ -53,7 +52,9 @@ class CLI
   end
   
   def print_anime_show
-    puts @anime
+    puts @anime.name 
+    puts @anime.description 
+    #binding.pry
   end
   
   
