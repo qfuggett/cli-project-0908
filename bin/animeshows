@@ -1,12 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pry'
-require 'net/http'   
-require 'json'
-
-require_relative '../lib/cli'
-require_relative '../lib/api'
-require_relative '../lib/anime'
-
+require_relative "../config/environment"
 
 CLI.new.menu
