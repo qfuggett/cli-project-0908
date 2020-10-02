@@ -7,19 +7,18 @@ class Anime
     @name = name
     @keyword = keyword
     @description = description
-    @@all << self   #stores all new instances as an object inside @@all 
+    @@all << self   
   end
     
     
-  def self.all    #returns all instances as an array of all the objects
+  def self.all    
     @@all         
   end
   
   
   def self.find_by_keyword(keyword)
     self.all.select do |a|
-      a.keyword == keyword      #returns what I am looking for (keyword) as a subset
+      a.keyword == keyword      
     end
   end
-  
 end
