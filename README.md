@@ -13,7 +13,7 @@ gem install json
 
 ## Usage
 
-Execute the bin file './bin/animeshows'. You will be prompted to enter a keyword after which, a list of anime shows will appear. You can enter a corresponding number for any anime to pull up a description.
+Execute the bin file `./bin/animeshows`. You will be prompted to enter a keyword after which, a list of anime shows will appear. You can enter a corresponding number for any anime to pull up a description.
 
 ## Contributing
 Bug reports and pull requests are welcome on Github at https://github.com/qfuggett/cli-project-0908.git. 
