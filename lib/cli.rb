@@ -3,8 +3,8 @@ class CLI
   
   def menu
     puts ""
-    puts "Welcome to the Anime Recommender"
-    puts "_________________________________"
+    puts "Welcome to the Anime Show Recommender"
+    puts "_____________________________________"
     puts ""
     puts "Enter a keyword to pull up a list of recommendations:"
     
@@ -57,6 +57,8 @@ class CLI
   
   
   def print_anime
+    puts ""
+    puts "Recommendations:"
     Anime.find_by_keyword(@keyword).each.with_index do |a, i|
       puts "#{i+1}. #{a.name}"
     end
@@ -64,6 +66,7 @@ class CLI
   
   
   def print_anime_show
+    puts ""
     puts @anime.name
     puts @anime.description
     puts "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧"
