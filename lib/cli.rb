@@ -43,6 +43,7 @@ class CLI
       end
       input = gets.strip.downcase
     end
+    puts ""
     puts "Thank you for using 'Anime Show Recommender'!"
     puts "Goodbye!"
   end
