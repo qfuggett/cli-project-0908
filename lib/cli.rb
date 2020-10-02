@@ -14,6 +14,7 @@ class CLI
       @keyword = gets.strip.downcase
       while API.get_anime(@keyword).count == 0
         puts "Your keyword has no matching anime. Please try a different keyword."
+        @keyword = gets.strip.downcase
       end
       print_anime
       prompt
@@ -38,13 +39,13 @@ class CLI
       elsif input.to_i > 0 && input.to_i <= Anime.find_by_keyword(@keyword).count
        
       #Anime.all entire array of objects
-        @anime = Anime.find_by_keyword(@keyword)[input.to_i-1]
+        @anime = Anime.find_by_keyword(@keyword)[input.to_i]
         API.get_anime(anime) if !anime.name
         #binding.pry
         print_anime_show
 
       else
-        puts "Invalid input. Please try again!"
+        puts "Invalid input. Please try again! Enter 'keyword' to see the list again."
       end
       input = gets.strip.downcase
     end
@@ -61,9 +62,6 @@ class CLI
   
   
   def print_anime
-    # Anime.all.each.with_index(1) do |a, i|
-    #   puts "#{i}. #{a.name}"
-    # end
     Anime.find_by_keyword(@keyword).each.with_index do |a, i|
       puts "#{i}. #{a.name}"
     end
@@ -72,7 +70,9 @@ class CLI
   def print_anime_show
     puts @anime.name
     puts @anime.description
-    puts "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧"
+    puts "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧"
+    puts ""
+    puts "Type 'keyword' to see the list again, or 'exit' to exit."
     #binding.pry
   end
   
