@@ -9,11 +9,11 @@ class CLI
     puts "Enter a keyword to pull up a list of recommendations:"
     
     @keyword = gets.strip.downcase
-    if API.get_anime(@keyword).count == 0
+    if API.new.get_anime(@keyword).count == 0
       puts "Your keyword has no matching anime. Please try a different keyword."
       @keyword = gets.strip.downcase
       
-      while API.get_anime(@keyword).count == 0
+      while API.new.get_anime(@keyword).count == 0
         puts "Your keyword has no matching anime. Please try a different keyword."
         @keyword = gets.strip.downcase
       end
@@ -57,7 +57,7 @@ class CLI
   
   def print_anime
     Anime.find_by_keyword(@keyword).each.with_index do |a, i|
-      puts "#{i}. #{a.name}"
+      puts "#{i+1}. #{a.name}"
     end
   end
   
