@@ -4,25 +4,43 @@ class CLI
   def menu
     puts ""
     puts "Welcome to the Anime Recommender"
-    puts "______________________________________"
+    puts "_________________________________"
     puts ""
     puts "Enter a keyword to pull up a list of recommendations:"
     @keyword = gets.strip.downcase
-    API.get_anime(@keyword)
-    print_anime
-    prompt
+    #API.get_anime(@keyword)
+    if API.get_anime(@keyword).count == 0
+      puts "Your keyword has no matching anime. Please try a different keyword."
+      @keyword = gets.strip.downcase
+      while API.get_anime(@keyword).count == 0
+        puts "Your keyword has no matching anime. Please try a different keyword."
+      end
+      print_anime
+      prompt
+    else
+      print_anime
+      prompt
+    end
+    
+    
+   # binding.pry
+  
 
+    
     input = gets.strip.downcase
     while input != 'exit' do
+      
       if input == 'keyword'
         API.get_anime(@keyword) if Anime.find_by_keyword(@keyword).length == 0 
         print_anime
         prompt
-    
+        
       elsif input.to_i > 0 && input.to_i <= Anime.find_by_keyword(@keyword).count
-      #binding.pry Anime.all entire array of objects
+       
+      #Anime.all entire array of objects
         @anime = Anime.find_by_keyword(@keyword)[input.to_i-1]
         API.get_anime(anime) if !anime.name
+        #binding.pry
         print_anime_show
 
       else
@@ -30,7 +48,7 @@ class CLI
       end
       input = gets.strip.downcase
     end
-    puts "Thank you for using the 'Anime Show Recommender'!"
+    puts "Thank you for using 'Anime Show Recommender'!"
     puts "Goodbye!"
   end
   
@@ -52,8 +70,9 @@ class CLI
   end
   
   def print_anime_show
-    puts @anime.name 
-    puts @anime.description 
+    puts @anime.name
+    puts @anime.description
+    puts "✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧"
     #binding.pry
   end
   
