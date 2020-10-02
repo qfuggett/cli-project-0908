@@ -34,7 +34,7 @@ class CLI
         prompt
         
       elsif input.to_i > 0 && input.to_i <= Anime.find_by_keyword(@keyword).count
-        @anime = Anime.find_by_keyword(@keyword)[input.to_i]
+        @anime = Anime.find_by_keyword(@keyword)[input.to_i-1]
         API.get_anime(anime) if !anime.name
         print_anime_show
 
