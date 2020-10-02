@@ -7,7 +7,7 @@ Command Line Interface (CLI) app that retrieves a list of anime shows from the [
 Be sure to install the following gems: 
 
 ````ruby
-gem 'install pry'
+gem install 'pry'
 gem install json
 ````
 
